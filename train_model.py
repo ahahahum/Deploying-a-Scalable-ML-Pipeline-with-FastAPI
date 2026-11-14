@@ -45,7 +45,15 @@ X_train, y_train, encoder, lb = process_data(
     training=True,
 )
 
-# Process the test data
+# Process the test data with the encoder and label binarizer from training
+X_test, y_test, _, _ = process_data(
+    test,
+    categorical_features=cat_features,
+    label="salary",
+    training=False,
+    encoder=encoder,
+    lb=lb,
+)
 
 # Train the model on the training dataset
 model = train_model(X_train, y_train)
